@@ -209,6 +209,9 @@ int consulta_lista_mat(Lista* li, int mat, struct Aluno *al)
 
 int imprime_lista(Lista* li, struct Aluno *al)
 {
+    if (li == NULL || li->p_inicio == NULL)
+        return 2;
+        
     Elem* no = li->p_inicio;
 
     do

@@ -23,40 +23,42 @@ void show_menu_principal() {
 }
 
 // Apresenta o menu interativo de cadastro.
-void show_menu_cadastro(Lista* li, struct Aluno *al) {
-        printf("\nDigite a Matrícula: ");
-        scanf("%d", &al->matricula);
-        getchar(); // (Tiago): Captura o '\n' solto no input stream
-        printf("Digite o nome: ");
-        scanf("%[^\n]*", al->nome);
+void show_menu_cadastro(Lista* li, struct Aluno *al) 
+{
+    printf("\nDigite a Matrícula: ");
+    scanf("%d", &al->matricula);
+    getchar(); // (Tiago): Captura o '\n' solto no input stream
+    printf("Digite o nome: ");
+    scanf("%[^\n]*", al->nome);
 
-        printf("Digite a Nota 1: ");
-        scanf("%lf", &al->n1);
-        printf("Digite a Nota 2: ");
-        scanf("%lf", &al->n2);
-        printf("Digite a Nota 3: ");
-        scanf("%lf", &al->n3);
-        
+    printf("Digite a Nota 1: ");
+    scanf("%lf", &al->n1);
+    printf("Digite a Nota 2: ");
+    scanf("%lf", &al->n2);
+    printf("Digite a Nota 3: ");
+    scanf("%lf", &al->n3);
+    
+    getchar();
+
+    if ((al->n1 < 1 || al->n1 > 10)  || (al->n2 < 1 || al->n2 > 10) || (al->n3 < 1 || al->n3 > 10))
+    {
+        printf("-------------------------------------\n");
+        printf("Uma nota não pode ser menor que 0 ou maior que 10!\n");
+        printf("Pressione ENTER para tentar novamente...\n");
         getchar();
+        system("clear");
+        show_menu_cadastro(li, al);
+    }
+    else if (consulta_lista_mat(li, al->matricula, al) == 1)
+    {
+        printf("-------------------------------------\n");
+        printf("Uma matrícula não pode ser repetida!\n");
+        printf("Pressione ENTER para tentar novamente...\n");
+        getchar();
+        system("clear");
+        show_menu_cadastro(li, al);
+    }
 
-        if ((al->n1 < 1 || al->n1 > 10)  || (al->n2 < 1 || al->n2 > 10) || (al->n3 < 1 || al->n3 > 10))
-        {
-            printf("-------------------------------------\n");
-            printf("Uma nota não pode ser menor que 0 ou maior que 10!\n");
-            printf("Pressione ENTER para tentar novamente...\n");
-            getchar();
-            system("clear");
-            show_menu_cadastro(li, al);
-        }
-        else if (consulta_lista_mat(li, al->matricula, al) == 1)
-        {
-            printf("-------------------------------------\n");
-            printf("Uma matrícula não pode ser repetida!\n");
-            printf("Pressione ENTER para tentar novamente...\n");
-            getchar();
-            system("clear");
-            show_menu_cadastro(li, al);
-        }
 }
 
 void exibe_consulta(struct Aluno *al)
@@ -67,7 +69,7 @@ void exibe_consulta(struct Aluno *al)
         al->n1,
         al->n2,
         al->n3);
-    printf("Média das notas: %.2f\n", ((al->n1,+ al->n2 + al->n3 / 3)));
+    printf("Média das notas: %.2f\n", ((al->n1 + al->n2 + al->n3) / 3));
     printf("---------------------------------------\n");
 }
 
