@@ -183,6 +183,7 @@ int consulta_lista_pos(Lista* li, int pos, struct Aluno *al)
     else
     {
         *al = no->dados;
+        exibe_consulta(al);
         return 1;
     }
 }
@@ -203,6 +204,7 @@ int consulta_lista_mat(Lista* li, int mat, struct Aluno *al)
     else
     {
         *al = no->dados;
+        exibe_consulta(al);
         return 1;
     }
 }

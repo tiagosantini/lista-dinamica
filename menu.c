@@ -37,9 +37,9 @@ void show_menu_cadastro(Lista* li, struct Aluno *al)
     scanf("%lf", &al->n2);
     printf("Digite a Nota 3: ");
     scanf("%lf", &al->n3);
-    
-    getchar();
 
+    getchar();
+    
     if ((al->n1 < 1 || al->n1 > 10)  || (al->n2 < 1 || al->n2 > 10) || (al->n3 < 1 || al->n3 > 10))
     {
         printf("-------------------------------------\n");
@@ -47,7 +47,7 @@ void show_menu_cadastro(Lista* li, struct Aluno *al)
         printf("Pressione ENTER para tentar novamente...\n");
         getchar();
         system("clear");
-        show_menu_cadastro(li, al);
+        return show_menu_cadastro(li, &al);
     }
     else if (consulta_lista_mat(li, al->matricula, al) == 1)
     {
@@ -56,7 +56,7 @@ void show_menu_cadastro(Lista* li, struct Aluno *al)
         printf("Pressione ENTER para tentar novamente...\n");
         getchar();
         system("clear");
-        show_menu_cadastro(li, al);
+        return show_menu_cadastro(li, &al);
     }
 
 }
