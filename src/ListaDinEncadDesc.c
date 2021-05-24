@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "ListaDinEncadDesc.h"
+#include "../headers/ListaDinEncadDesc.h"
 
 // Implementação das estruturas de dados
 struct Elemento

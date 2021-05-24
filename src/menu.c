@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "ListaDinEncadDesc.h"
+#include "../headers/ListaDinEncadDesc.h"
 
 // Apresenta o menu interativo principal.
 void show_menu_principal() {
@@ -23,7 +23,7 @@ void show_menu_principal() {
 }
 
 // Apresenta o menu interativo de cadastro.
-void show_menu_cadastro(Lista* li, struct Aluno *al) 
+int show_menu_cadastro(Lista* li, struct Aluno *al) 
 {
     printf("\nDigite a Matrícula: ");
     scanf("%d", &al->matricula);
@@ -44,21 +44,22 @@ void show_menu_cadastro(Lista* li, struct Aluno *al)
     {
         printf("-------------------------------------\n");
         printf("Uma nota não pode ser menor que 0 ou maior que 10!\n");
-        printf("Pressione ENTER para tentar novamente...\n");
+        printf("Pressione ENTER para voltar...\n");
         getchar();
         system("clear");
-        return show_menu_cadastro(li, &al);
+        return 0;
     }
     else if (consulta_lista_mat(li, al->matricula, al) == 1)
     {
         printf("-------------------------------------\n");
         printf("Uma matrícula não pode ser repetida!\n");
-        printf("Pressione ENTER para tentar novamente...\n");
+        printf("Pressione ENTER para voltar...\n");
         getchar();
         system("clear");
-        return show_menu_cadastro(li, &al);
+        return 0;
     }
 
+    return 1;
 }
 
 void exibe_consulta(struct Aluno *al)

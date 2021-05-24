@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "ListaDinEncadDesc.h"
+#include "../headers/ListaDinEncadDesc.h"
 
 int main() {
     
@@ -19,9 +19,11 @@ int main() {
         scanf("%d", &opcao);
         switch (opcao) {
                 case 1:
-                        show_menu_cadastro(li, &dados_aluno);
-                        if (insere_lista_final(li, dados_aluno) == 1)
-                                mensagem_cadastro_sucesso();
+                        if (show_menu_cadastro(li, &dados_aluno) == 1)
+                        {
+                                if (insere_lista_final(li, dados_aluno) == 1)
+                                        mensagem_cadastro_sucesso();
+                        }
                         else
                                 mensagem_erro_inesperado();
                         break;

@@ -31,7 +31,7 @@ int imprime_lista(Lista* li, struct Aluno *al);
 int show_menu_posicao();
 int show_menu_matricula();
 void show_menu_principal();
-void show_menu_cadastro(Lista* li, struct Aluno *al);
+int show_menu_cadastro(Lista* li, struct Aluno *al);
 void exibe_consulta(struct Aluno *al);
 void mensagem_cadastro_sucesso();
 void mensagem_erro_inesperado();
